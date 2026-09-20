@@ -1,0 +1,181 @@
+body {
+    background: #111111;
+    color: #dddddd;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 10px 0 5px 0;
+}
+
+h3 {
+    color: #aaaaaa;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin: 15px auto;
+    width: 90%;
+}
+
+.btn-container {
+    margin: 20px 0 30px 0;
+}
+
+button {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 12px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled, button:hover:disabled {
+    background: #0b2253;
+    cursor: default;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.main-layout {
+    width: 96%;
+    margin: 0 auto;
+}
+
+.media-box {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.media-box img {
+    width: 90%;
+    height: auto;
+    border: 1px solid #222222;
+}
+
+#console {
+    float: right;
+    width: 70%;
+    background: #000000;
+    color: #00ff00;
+    font-size: 14px;
+    padding: 15px;
+    text-align: left;
+    height: 290px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border: 1px solid #222222;
+}
+
+#kernel-options {
+    margin-bottom: 1rem;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #555;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked {
+    background-color: #00ff00;
+}
+
+.mt-2{
+    margin-top: 2rem;
+}
+/* Integrated RAW 13.52 runner */
+#raw1352-stage { display:none; }
+body.raw1352-running .main-layout > *:not(#raw1352-stage) { display:none; }
+body.raw1352-running #raw1352-stage { display:block; }
+#raw1352-spin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+    border: 4px solid #333;
+    border-top-color: #7fd0a0;
+    border-radius: 50%;
+    animation: raw1352spin .9s linear infinite;
+}
+@keyframes raw1352spin { to { transform: rotate(360deg); } }
+#raw1352-msg {
+    position: fixed;
+    top: 50%;
+    left: 0; right: 0;
+    transform: translateY(-50%);
+    text-align:center;
+    font-size:16px;
+    display:none;
+}
+body.raw1352-done #raw1352-spin,
+body.raw1352-fail #raw1352-spin { display:none; }
+body.raw1352-fail #raw1352-msg { display:block; }
+body.raw1352-log #raw1352-spin,
+body.raw1352-log #raw1352-msg { display:none; }
+body.raw1352-log #raw1352-state {
+    display:block;
+    font-size:22px;
+    font-weight:700;
+    margin:20px;
+}
+body.raw1352-log #raw1352-out {
+    display:block;
+    white-space:pre-wrap;
+    font:12px/1.45 Consolas,monospace;
+    background:#000;
+    border:1px solid #333;
+    padding:10px;
+    margin:20px;
+    height:calc(100vh - 180px);
+    overflow-y:auto;
+    text-align:left;
+}
+
+body.raw1352.done #raw1352-stage,
+body.raw1352.fail #raw1352-stage { display:block; }
+body.raw1352.done .main-layout > *:not(#raw1352-stage),
+body.raw1352.fail .main-layout > *:not(#raw1352-stage) { display:none; }
+
+/* RAW GAME 4 integrated panel */
+#rawgame-panel {
+  margin-top: 12px;
+}
+#rawgame-panel[hidden] {
+  display: none;
+}
+#rawgame-state {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+#rawgame-out {
+  white-space: pre-wrap;
+  font: 12px/1.45 Consolas, monospace;
+  background: #11151b;
+  border: 1px solid #1e2732;
+  border-radius: 5px;
+  padding: 10px 12px;
+  height: 45vh;
+  overflow-y: auto;
+}
