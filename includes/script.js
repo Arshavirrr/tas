@@ -39,8 +39,8 @@ function validateSelectedExploit() {
         alert("Lapse/NetCtrl is reserved for PS4 firmware 6.00–11.02 in this unified build.");
         return false;
     }
-    if (exploitChain === "rawgame4" && !(fw >= 1150 && fw <= 1202 || fw >= 1250 && fw <= 1300)) {
-        alert("RAW GAME 4 supports 11.50–12.02 and 12.50–13.00. Firmware 12.03–12.49 is not covered by the supplied source.");
+    if (exploitChain === "rawgame4" && ![1150, 1152, 1200, 1202, 1250, 1252, 1300].includes(fw)) {
+        alert("RawGame4 versions listed by its source: 11.50, 11.52, 12.00, 12.02, 12.50, 12.52, 13.00.");
         return false;
     }
     if (exploitChain === "raw1352" && !(fw >= 1302 && fw <= 1352)) {
@@ -129,17 +129,10 @@ function displayCacheProgress() {
 
 
 async function runRaw1352() {
-    document.body.classList.add("raw1352-running");
-    document.getElementById("raw1352-stage").setAttribute("aria-hidden", "false");
-    document.title = "PS4 Jailbreak 13.52";
-    try {
-        await import("../src/1352/jb.js?v=merged1");
-    } catch (e) {
-        document.body.classList.remove("raw1352-running");
-        document.body.classList.add("raw1352-fail");
-        const msg = document.getElementById("raw1352-msg");
-        msg.textContent = "13.52 exploit failed to load: " + (e && e.message ? e.message : e);
-    }
+    // Raw13G's current upstream layout is a self-contained index.html -> jb.html flow.
+    // Launch that host at its own path so its DOM, relative payload paths, and AppCache work.
+    document.title = "PS4 Jailbreak — Raw13G";
+    window.location.href = "src/1352/index.html";
 }
 
 document.addEventListener("DOMContentLoaded", function() {

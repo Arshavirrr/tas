@@ -1,6 +1,5 @@
 // RAW GAME 4 runner: firmware-gated integration for the unified PS4 UI.
-// Supported selection range: 11.50-12.02 (lapse chain) and 12.50-13.00 (poops chain).
-// The 12.03-12.49 gap remains unsupported by RAW GAME 4 itself.
+// Firmware versions listed by the upstream project: 11.50, 11.52, 12.00, 12.02, 12.50, 12.52, 13.00.
 async function runRawGame4() {
   const state = document.getElementById("rawgame-state");
   const out = document.getElementById("rawgame-out");
@@ -24,8 +23,8 @@ async function runRawGame4() {
   const fwnum = major * 100 + parseInt(minorHex, 10);
 
   let chain = null;
-  if (fwnum >= 1150 && fwnum <= 1202) chain = "lapse";
-  else if (fwnum >= 1250 && fwnum <= 1300) chain = "poops";
+  if ([1150, 1152, 1200, 1202].includes(fwnum)) chain = "lapse";
+  else if ([1250, 1252, 1300].includes(fwnum)) chain = "poops";
 
   if (!chain) {
     if (state) {
@@ -33,8 +32,8 @@ async function runRawGame4() {
       state.className = "bad";
     }
     if (out) out.textContent =
-      "RAW GAME 4 supports 11.50–12.02 and 12.50–13.00.\n" +
-      "12.03–12.49 is not covered by the supplied RAW GAME 4 source.";
+      "Listed firmware versions: 11.50, 11.52, 12.00, 12.02, 12.50, 12.52, 13.00.\n" +
+      "This firmware is not listed as supported by the supplied RAW GAME 4 source.";
     return;
   }
 
