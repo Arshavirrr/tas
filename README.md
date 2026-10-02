@@ -84,13 +84,14 @@ This repository should therefore be considered an **integration project**, rathe
 
 The current integrated GoldHEN payload version used by this project is:
 
-**GoldHEN 2.4b18.11**
+**GoldHEN 2.4b18.12**
 
-This version is used for the supported firmware ranges integrated into this host, **excluding firmware 13.02–13.50**.
+This version is used for the supported firmware ranges integrated into this host.
 
 GoldHEN is developed by the GoldHEN team:
 
 https://github.com/GoldHEN/GoldHEN
+https://ko-fi.com/sistro
 
 Future GoldHEN releases and exploit updates will be integrated into this project as quickly as possible whenever compatible versions become available.
 
